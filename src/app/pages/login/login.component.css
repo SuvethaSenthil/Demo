@@ -1,0 +1,301 @@
+/* General body style for centering the form */
+body {
+    margin: 0;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    padding: 20px; /* Space around the container */
+
+
+
+    padding: 0;
+    height: 100%;
+    
+    flex-direction: column;
+}
+
+/* Container styling for the form */
+.container {
+    background-color: white;
+    padding: 40px 30px;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin: 0 auto; /* Centering and ensuring no extra top-bottom space */
+    padding-right: 50px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the circular brand logo (user image placeholder) */
+.brand-logo {
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcCuCOisgxyOypyBi-hRYYV2Onv7KVI6QTVA&s) no-repeat center center;
+    background-size: cover;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid #09b1fc;
+}
+
+/* Styling for the title of the form */
+.brand-title {
+    margin-top: 15px;
+    color: #1f87e7;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/* Input section styling for form inputs */
+.inputs {
+    text-align: left;
+    margin-top: 30px;
+    padding-bottom: 0; /* Remove unwanted bottom space */
+}
+
+label {
+    color: #1f87e7;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 14px;
+}
+
+input {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #09b1fc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(9, 177, 252, 0.2);
+}
+
+/* Styling for the buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    background-color: #1f87e7;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #155a9c;
+}
+
+
+
+/* Link section styling */
+.login-link, .signup-link, .forgot-password {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: #1f87e7;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -15px; /* Move the message up */
+    margin-bottom: 15px; /* Space below the message */
+}
+
+
+
+/* Forgot Password Link */
+.forgot-password-section {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.forgot-password-section a {
+    color: #0059b3;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-password-section a:hover {
+    color: #003366;
+}
+
+/* Forgot Password Modal */
+#forgot-password-modal {
+    background-color: #f9f9f9;
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+
+#forgot-password-modal input {
+    width: 80%;
+    padding: 0.8em;
+    margin: 0.5em 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#forgot-password-modal button {
+    background-color: #0059b3;
+    color: white;
+    border: none;
+    padding: 0.8em 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#forgot-password-modal button:hover {
+    background-color: #003366;
+}
+
+/* Error Message Styling */
+#forgot-password-error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+}
+
+/* OTP Section (Initially Hidden) */
+#otp-section {
+    margin-top: 1em;
+}
+
+#otp-section label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+
+
+
+/* Header Section */
+header {
+    background-color: #003366;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #0059b3;
+    border-radius: 5px;
+}
+
+nav ul li a.active {
+    background-color: #ff7043;
+    padding: 0.5em 1.5em;
+    border-radius: 5px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .contact-info {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .newsletter {
+    flex: 1;
+  }
+  
+  h2, h3 {
+    color: #fff;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input[type="email"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #formMessage {
+    color: green;
+    margin-top: 10px;
+  }

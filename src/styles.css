@@ -1,1 +1,191 @@
 /* You can add global styles to this file, and also import other style files */
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+header {
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 25px 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #ff5733;
+    border-radius: 4px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../plan.avif') no-repeat center center/cover;
+    opacity: 0.9;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: fade-in 1.5s ease;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: float 2s infinite;
+    color: #ffbd69;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.cta-buttons button {
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-buttons button:hover {
+    background-color: #ff7843;
+}
+
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .contact-info {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .newsletter {
+    flex: 1;
+  }
+  
+  h2, h3 {
+    color: #fff;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input[type="email"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #formMessage {
+    color: green;
+    margin-top: 10px;
+  }
+
+/* Animations */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes move-in {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
