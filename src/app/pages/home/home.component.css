@@ -1,3 +1,4 @@
+
 .investment-section {
     text-align: center;
     padding: 40px 20px;
@@ -144,6 +145,65 @@
 button{
     background-color: #e56c3d; 
 }
+
+
+.categories-container {
+
+    text-align: center;
+    margin: 50px auto;
+  }
+  
+ 
+  .subtitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ff6600; /* Match to your design */
+    margin-bottom: 40px;
+  }
+  
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four containers per row */
+    gap: 20px;
+    justify-items: center;
+    margin-top: 30px;
+  }
+  
+  .topic-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .topic-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .topic-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+  }
+  
+  /* Media Query for smaller screens (2 or 1 containers per row based on width) */
+  @media (max-width: 1200px) {
+    .topics-grid {
+      grid-template-columns: repeat(2, 1fr); /* Two containers per row for smaller screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .topics-grid {
+      grid-template-columns: 1fr; /* One container per row for very small screens */
+    }
+  }
+  
+
 
 
 /* Responsive Styling */

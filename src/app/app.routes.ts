@@ -6,6 +6,11 @@ import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 
+
+
+
+
+
 export const routes: Routes = [
     {
         path:'',
@@ -37,3 +42,8 @@ export const routes: Routes = [
         component:SignupComponent
     }
 ];
+
+
+
+
+

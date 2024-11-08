@@ -1,63 +1,234 @@
-.categories-container {
 
-    text-align: center;
-    margin: 50px auto;
+/* styles.css */
+
+/* Reset default padding and margin */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+ /* Main section styling */
+ .about-section {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-top: 40px;
+  background-image: url('https://godatadrive.com/hs-fs/hubfs/people-on-devices.jpg?width=3200&name=people-on-devices.jpg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+/* Dark overlay effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title styling */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+  font-size: 1rem;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+/* Main content section */
+.main-content {
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+}
+
+.main-content h2 {
+  font-size: 2rem;
+  color: #1a3a5f;
+  font-weight: bold;
+}
+
+.main-content p {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.main-content em {
+  color: #1a3a5f;
+}
+
+.main-content strong {
+  color: #333;
+}
+
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #eaeaea;
+}
+
+.outer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100vw - 80px);
+  height: calc(100vh - 80px);
+  padding: 40px;
+}
+
+.outer-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 30px solid white;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image-section, .text-section {
+  width: 50vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s ease-in-out;
+}
+
+.image-section {
+  background-color: #f5f5f5;
+  transform: translateX(-100%);
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-section {
+  background-color: #a6b67e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  transform: translateX(100%);
+  text-align: center;
+}
+
+.text-content {
+  margin-bottom: 20px;
+}
+
+.text-content h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.text-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 90%;
+}
+
+.container.merged .image-section,
+.container.merged .text-section {
+  transform: translateX(0);
+}
+
+/* Grid Container */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  padding-top: 20px;
+}
+
+/* Box Style with Hover Animation */
+.box {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 1s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  height: 150px;
+}
+
+.box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.box-content {
+  position: absolute;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.box-content span {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .text-content h1 {
+    font-size: 1.5rem;
   }
-  
-  .title {
-    margin-top: 10px;
-    font-size: 24px;
-    font-weight: 600;
-    color: #f5821f; /* Adjust this to match your color scheme */
-    margin-bottom: 10px;
+
+  .text-content p {
+    font-size: 0.9rem;
   }
-  
-  .subtitle {
-    font-size: 28px;
-    font-weight: 700;
-    color: #ff6600; /* Match to your design */
-    margin-bottom: 40px;
-  }
-  
-  .topics-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Four containers per row */
-    gap: 20px;
-    justify-items: center;
-    margin-top: 30px;
-  }
-  
-  .topic-card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    text-align: center;
-    width: 100%;
-    max-width: 250px;
-  }
-  
-  .topic-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .topic-icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 15px;
-  }
-  
-  /* Media Query for smaller screens (2 or 1 containers per row based on width) */
-  @media (max-width: 1200px) {
-    .topics-grid {
-      grid-template-columns: repeat(2, 1fr); /* Two containers per row for smaller screens */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .topics-grid {
-      grid-template-columns: 1fr; /* One container per row for very small screens */
-    }
-  }
-  
+}
