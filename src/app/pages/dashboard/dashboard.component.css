@@ -1,4 +1,4 @@
-/* Main section styling */
+/* Main Section Styling */
 .about-section {
   position: relative;
   width: 100%;
@@ -12,121 +12,300 @@
   justify-content: center;
   color: white;
   text-align: center;
+  overflow: hidden;
 }
 
-/* Dark overlay effect */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Title styling */
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   margin: 0;
+  letter-spacing: 2px;
+  animation: fadeInUp 1s ease-in-out;
 }
 
-/* Breadcrumb styling */
 .breadcrumb {
-  font-size: 1rem;
-  margin-top: 8px;
-  opacity: 0.8;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #f5f5f5;
+  opacity: 0.9;
+  animation: fadeInUp 1.2s ease-in-out;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-.container {
+/* Welcome Section */
+.welcome-section {
+  text-align: center;
+  margin: 20px 0;
+  
   padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.category {
-  font-weight: bold;
-  color: #555;
-}
-
-.all-posts {
-  color: #00d9ff;
-  text-decoration: none;
-}
-
-.search-input {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.search-button {
-  background-color: #00d9ff;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background-color: #111;
-  color: white;
-  padding: 20px;
+  color: black;
   border-radius: 10px;
-  position: relative;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 10px;
+.welcome-message {
+  font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
-.tag {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  color: white;
-}
-
-.title {
+.subtitle {
   font-size: 1.2rem;
-  margin-top: 10px;
+  opacity: 0.9;
 }
 
-.date {
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.action-button {
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.action-button:hover {
+  background: #0056b3;
+  transform: scale(1.1);
+}
+
+/* Course Page */
+.course-page {
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.search-bar {
+  width: 60%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Courses Container */
+.courses-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  padding: 60px;
+}
+
+.course-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  animation: zoomIn 1s ease-in-out;
+}
+
+.course-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.course-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover .course-image {
+  transform: scale(1.1);
+}
+
+.course-content,
+.course-details {
+  padding: 15px;
+}
+
+.course-title {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.course-topics {
+  list-style: none; /* Removes the default bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.course-topics li {
   font-size: 0.9rem;
-  color: #ccc;
-  margin-top: 5px;
-  display: block;
+  margin: 5px 0;
+  padding-left: 10px;
+  position: relative;
+}
+
+.course-topics li::before {
+  content: '•'; /* Adds a custom bullet point */
+  color: #4caf50;
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Get Started Button */
+.get-started-button {
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.get-started-button:hover {
+  background-color: #043870;
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.newsletter {
+  flex: 1;
+}
+
+h2, h3 {
+  color: #fff;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#formMessage {
+  color: green;
+  margin-top: 10px;
 }

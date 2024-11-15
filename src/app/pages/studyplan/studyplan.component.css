@@ -1,0 +1,258 @@
+/* Main section styling */
+.about-section {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-top: 40px;
+  background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*7KEH1L7kBZr82saodedPxw.jpeg'); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+/* Dark overlay effect */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Title styling */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+  font-size: 1rem;
+  margin-top: 8px;
+  opacity: 0.8;
+} 
+
+
+
+
+/* Container Styling */
+.container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffffff, #f0f4f8);
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title Styling */
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #4299e1, #667eea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+/* Slide In Animation for Title */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Label Styling */
+label {
+  display: block;
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+label:hover {
+  color: #4299e1;
+}
+
+/* Input and Select Styling */
+input[type="text"],
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #2d3748;
+  background-color: #f9fafb;
+  border: 2px solid #e0e4e7;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 8px rgba(66, 153, 225, 0.3);
+}
+
+/* Placeholder Styling */
+input::placeholder {
+  color: #a0aec0;
+}
+
+/* Time Increment and Decrement Button Styling */
+.time-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-input button {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  background-color: #e0e4e7;
+  border: none;
+  color: #34495e;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.time-input button:hover {
+  background-color: #d1d8dd;
+  transform: scale(1.1);
+}
+
+/* Generate Button Styling */
+.generate-button {
+  background: linear-gradient(90deg, #4299e1, #667eea);
+  color: white;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition:  0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 12px rgba(66, 153, 225, 0.3);
+  margin-top: 1.5rem;
+  animation: bounceIn 0.8s ease-out;
+}
+
+.generate-button:hover {
+  background: linear-gradient(90deg, #3182ce, #5a67d8);
+  box-shadow: 0 8px 16px rgba(49, 130, 206, 0.4);
+}
+
+/* Bounce In Animation for Button */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+/* Suggested Materials Styling */
+.suggestions-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #e6f4f1;
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.suggestions-container h2 {
+  font-size: 1.5rem;
+  color: #2c7a7b;
+  margin-bottom: 1rem;
+}
+
+.suggestions-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.suggestions-container li {
+  margin: 0.5rem 0;
+}
+
+.suggestions-container a {
+  color: #2b6cb0;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.suggestions-container a:hover {
+  text-decoration: underline;
+}
+
+.skip-button {
+  background-color: #e53e3e;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.skip-button:hover {
+  background-color: #c53030;
+}

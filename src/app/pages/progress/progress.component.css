@@ -58,4 +58,30 @@
     margin-top: 8px;
     opacity: 0.8;
   }
+
+  .progress-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .user-info,
+  .score-report,
+  .weekly-report {
+    margin-bottom: 20px;
+  }
+  
+  .bar-chart {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  
+  .bar {
+    width: 40px;
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+  }
   

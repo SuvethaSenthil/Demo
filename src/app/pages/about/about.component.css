@@ -150,7 +150,7 @@ body, html {
 
 .text-section {
   background-color: #a6b67e;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -213,10 +213,11 @@ body, html {
 
 .box-content {
   position: absolute;
-  color: #ffffff;
+  color: black;
   text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
+  opacity: 0.6;
 }
 
 .box-content span {
@@ -231,4 +232,73 @@ body, html {
   .text-content p {
     font-size: 0.9rem;
   }
+}
+
+
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.newsletter {
+  flex: 1;
+}
+
+h2, h3 {
+  color: #fff;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  background-color: #ff7843;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #ff7843;
+}
+
+#formMessage {
+  color: green;
+  margin-top: 10px;
 }

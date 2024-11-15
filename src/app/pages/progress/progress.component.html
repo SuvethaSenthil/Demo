@@ -4,3 +4,31 @@
       <p class="breadcrumb">Home / Progress</p>
     </div>
   </div>
+
+  <div class="progress-container">
+    <h2>User Progress</h2>
+    
+    <!-- User and Quiz Information -->
+    <div class="user-info">
+      <p><strong>User Name:</strong> {{ userName }}</p>
+      <p><strong>Last Quiz Attempt:</strong> {{ recentQuizName }}</p>
+    </div>
+  
+    <!-- Score and Daily Report Section -->
+    <div class="score-report">
+      <h3>Score: {{ recentQuizScore }}/100</h3>
+      <button (click)="generateDailyReport()">View Daily Report</button>
+      <p *ngIf="dailyReport">{{ dailyReport }}</p>
+    </div>
+  
+    <!-- Weekly Report Section with Bar Chart -->
+    <div class="weekly-report">
+      <h3>Weekly Progress Report</h3>
+      <div class="bar-chart">
+        <div *ngFor="let score of weeklyScores" class="bar" [style.height]="score + '%'">
+          <span>{{ score }}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
