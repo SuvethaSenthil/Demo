@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,25 @@ import { Router } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  
+  isMenuOpen: boolean = false;
+
+  // Toggle menu visibility
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  // Close menu
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
+
+  // Logout functionality
+  logout() {
+    console.log('User logged out');
+    this.isMenuOpen = false;
+  }
+
+
 
   constructor(private router: Router) {}
 
@@ -31,13 +48,29 @@ export class AppComponent {
     const dashboardLink = document.getElementById('dashboard-link');
     const progressLink = document.getElementById('progress-link');
     const aboutLink = document.getElementById('about-link');
-    const dashboardSection = document.querySelector('#dashboard-section') as HTMLElement;
     const aboutSection = document.querySelector('#about-section') as HTMLElement;
-    const progressSection = document.querySelector('#progress-section') as HTMLElement;
 
-    
+    if (dashboardLink) {
+      dashboardLink.addEventListener('click', (e: Event) => {
+        e.preventDefault();
+        if (!this.isLoggedIn()) {
+          alert('Please log in to access the Dashboard.');
+        } else {
+          this.router.navigate(['/dashboard']);
+        }
+      });
+    }
 
-    
+    if (progressLink) {
+      progressLink.addEventListener('click', (e: Event) => {
+        e.preventDefault();
+        if (!this.isLoggedIn()) {
+          alert('Please log in to access the Progress section.');
+        } else {
+          this.router.navigate(['/progress']);
+        }
+      });
+    }
 
     // Smooth scroll to About Section
     if (aboutLink && aboutSection) {
@@ -49,29 +82,6 @@ export class AppComponent {
         });
       });
     }
-
-    // Smooth scroll to Dashboard Section
-    if (dashboardLink && dashboardSection) {
-      dashboardLink.addEventListener('click', (e: Event) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: dashboardSection.offsetTop,
-          behavior: 'smooth'
-        });
-      });
-    }
-
-    // Smooth scroll to Dashboard Section
-    if (progressLink && progressSection) {
-      progressLink.addEventListener('click', (e: Event) => {
-        e.preventDefault();
-        window.scrollTo({
-          top: progressSection.offsetTop,
-          behavior: 'smooth'
-        });
-      });
-    }
-
 
     // Dynamic title animation
     this.animateTitle();
@@ -88,9 +98,4 @@ export class AppComponent {
       }, 150);
     }
   }
-  
 }
-
-
-
-
