@@ -68,4 +68,9 @@ export class StudyplanComponent {
   skipSuggestions(): void {
     this.showSuggestions = false;
   }
+
+  takeQuiz(): void {
+    window.location.href = 'quiz';
+    this.showSuggestions=true;
+  }
 }
