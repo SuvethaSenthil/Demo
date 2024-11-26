@@ -2,19 +2,30 @@
 <header class="header">
   <div class="logo">AI-PLAN</div>
   <nav class="navbar">
-      <a href="home" class="nav-link ">Home</a>
-      <a href="about" class="nav-link">About</a>
-      <a href="profile" class="nav-link">Profile</a>
-      <a href="dashboard" class="nav-link">Dashboard</a>
-      <a href="studyplan" class="nav-link">Study plan</a>
-      <a href="progress" class="nav-link">Progress</a>
+    <a href="home" class="nav-link">Home</a>
+    <a href="about" class="nav-link">About</a>
+    <a href="dashboard" class="nav-link">Dashboard</a>
+    <a href="studyplan" class="nav-link">Study plan</a>
+    <a href="progress" class="nav-link">Progress</a>
   </nav>
   <div class="auth-buttons">
-      <a href="signup" class="sign-in">Sign Up</a>
-      <a href="login" class="login">Login</a>
+    <a href="signup" class="sign-in">Sign Up</a>
+    <a href="login" class="login">Login</a>
+  </div>
+  <div class="menu-bar" (click)="toggleMenu()">
+    <span class="menu-icon">&#9776;</span>
   </div>
 </header>
 
-
+<!-- Popup Container -->
+<div 
+  class="popup-container" 
+  [class.active]="isMenuOpen" 
+  (mouseleave)="closeMenu()"
+>
+  
+  <div class="popup-section">⚙️ Settings</div>
+  <div class="popup-section" (click)="logout()">🚪 Logout</div>
+</div>
 
 <router-outlet></router-outlet>
