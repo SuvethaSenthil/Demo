@@ -6,6 +6,8 @@ import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { StudyplanComponent } from './pages/studyplan/studyplan.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 
@@ -45,6 +47,14 @@ export const routes: Routes = [
     {
         path:'signup',
         component:SignupComponent
+    },
+    {
+        path:'quiz',
+        component:QuizComponent
+    },
+    {
+        path:'profile',
+        component:ProfileComponent
     }
 ];
 
