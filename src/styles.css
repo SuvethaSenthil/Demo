@@ -117,6 +117,60 @@ body {
     background-color: #ff7843;
 }
 
+
+
+.menu-bar {
+  position: absolute;
+  top: 23px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.menu-icon {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* Popup Container Styles */
+.popup-container {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  width: 150px;
+  height: 150px;
+  background: #333;
+  color: #fff;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.popup-container.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  
+}
+
+.popup-section {
+  cursor: pointer;
+  font-size: 1.20rem;
+  text-align: left;
+}
+
+.popup-section:hover {
+  color: #00d1b2;
+}
+
+
+
+
+
 /* General Footer Styles */
 .footer {
     background: linear-gradient(to right, #0d0d0e, #444446);
