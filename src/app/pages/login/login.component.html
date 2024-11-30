@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="brand-logo"></div>
+    <div class="brand-title">Log In</div>
+    <div class="inputs">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="yourname@example.com" />
+      <div class="error-message" id="email-error"></div>
+  
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Your Password" />
+      <div class="error-message" id="password-error"></div>
+  
+      <button (click)="logIn()">Log In</button>
+    </div>
+  
+    <div class="forgot-password-section">
+      <a href="#" (click)="showForgotPasswordModal($event)">Forgot Password?</a>
+    </div>
+  
+    <div class="signup-link">
+      <p>Don't have an account? <a href="signup">Sign Up</a></p>
+    </div>
+  </div>
+  
+  <div *ngIf="forgotPasswordContainer" class="forgot-password-container">
+    <label for="forgot-email">Enter your email:</label>
+    <input type="email" id="forgot-email" placeholder="Email" />
+    <button (click)="sendOtp()">Send OTP</button>
+  </div>
+  
+  <div *ngIf="otpVerificationContainer" class="otp-verification-container">
+    <label for="otp-input">Enter OTP:</label>
+    <input type="text" id="otp-input" placeholder="OTP" />
+    <button (click)="verifyOtp()">Verify OTP</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Left Section -->
+      <div class="footer-left">
+        <h2>AI Study Plan Builder</h2>
+        <p>
+          Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals with intelligent recommendations and personalized progress tracking.
+        </p>
+      </div>
+  
+      <!-- Middle Section - Explore -->
+      <div class="footer-middle">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="login">login</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="dashboard">Dashboard</a></li>
+          <li><a href="studyplan">Study Plan</a></li>
+          <li><a href="progress">Progress</a></li>
+        </ul>
+      </div>
+  
+      <!-- Middle Section - Resources -->
+      <div class="footer-resources">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Study Tips</a></li>
+          <li><a href="#">Quiz Practice</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+  
+      <!-- Right Section - Get in Touch -->
+      <div class="footer-right">
+        <h3>Get in Touch</h3>
+        <form id="contactForm">
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required
+          />
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+          <textarea
+            id="message"
+            rows="3"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p>© 2024 AI Study Plan Builder. All rights reserved.</p>
+    </div>
+  </footer>
+  
