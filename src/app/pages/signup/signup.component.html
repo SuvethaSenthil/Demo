@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="brand-logo"></div>
+  <div class="brand-title">Sign Up</div>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <label for="name">Name</label>
+      <input type="text" placeholder="Your Name" formControlName="name" />
+      <div class="error-message" *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid">
+          <small *ngIf="signUpForm.get('name')?.hasError('required')">Name is required</small>
+      </div>
+
+      <label for="email">Email</label>
+      <input type="email"  placeholder="yourname@example.com" formControlName="email" />
+      <div class="error-message" *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
+          <small *ngIf="signUpForm.get('email')?.hasError('required')">Email is required</small>
+          <small *ngIf="signUpForm.get('email')?.hasError('email')">Invalid email format</small>
+      </div>
+
+      <label for="password">Password</label>
+      <input type="password" placeholder="min 6 characters" formControlName="password" />
+      <div class="error-message" *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid">
+          <small *ngIf="signUpForm.get('password')?.hasError('required')">Password is required</small>
+          <small *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least 6 characters
+              long</small>
+      </div>
+
+      <label for="confirm-password">Confirm Password</label>
+      <input type="password" placeholder="Confirm your password"
+          formControlName="confirmPassword" />
+      <div class="error-message"
+          *ngIf="signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.invalid">
+          <small *ngIf="signUpForm.get('confirmPassword')?.hasError('required')">Confirm password is required</small>
+          <small *ngIf="signUpForm.get('confirmPassword')?.hasError('mismatch')">Passwords do not match</small>
+      </div>
+
+      <button type="submit" [disabled]="signUpForm.invalid">Sign Up</button>
+      <p>
+          <a (click)="navigateToLogin()">Already have an account? Log In</a>
+      </p>
+  </form>
+</div>
+
+
+  <footer class="footer">
+      <div class="footer-container">
+          <!-- Left Section -->
+          <div class="footer-left">
+              <h2>AI Study Plan Builder</h2>
+              <p>
+                  Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals
+                  with intelligent recommendations and personalized progress tracking.
+              </p>
+          </div>
+
+          <!-- Middle Section - Explore -->
+          <div class="footer-middle">
+              <h3>Explore</h3>
+              <ul>
+                  <li><a href="home">Home</a></li>
+                  <li><a href="login">login</a></li>
+                  <li><a href="about">About</a></li>
+                  <li><a href="dashboard">Dashboard</a></li>
+                  <li><a href="studyplan">Study Plan</a></li>
+                  <li><a href="progress">Progress</a></li>
+              </ul>
+          </div>
+
+          <!-- Middle Section - Resources -->
+          <div class="footer-resources">
+              <h3>Resources</h3>
+              <ul>
+                  <li><a href="#">About us</a></li>
+                  <li><a href="#">Study Tips</a></li>
+                  <li><a href="#">Quiz Practice</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Help Center</a></li>
+              </ul>
+          </div>
+
+          <!-- Right Section - Get in Touch -->
+          <div class="footer-right">
+              <h3>Get in Touch</h3>
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" id="contactForm">
+                  <input type="text" id="name" placeholder="Enter your name" formControlName="name" />
+                  <div *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+                      <small *ngIf="contactForm.get('name')?.hasError('required')">Name is required</small>
+                  </div>
+
+                  <input type="email" id="email" placeholder="Enter your email" formControlName="email" />
+                  <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+                      <small *ngIf="contactForm.get('email')?.hasError('required')">Email is required</small>
+                      <small *ngIf="contactForm.get('email')?.hasError('email')">Invalid email format</small>
+                  </div>
+
+                  <textarea id="message" rows="3" placeholder="Your Message" formControlName="message"></textarea>
+                  <div *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
+                      <small *ngIf="contactForm.get('message')?.hasError('required')">Message is required</small>
+                  </div>
+
+                  <button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+              </form>
+
+          </div>
+      </div>
+
+      <div class="footer-bottom">
+          <p>© 2024 AI Study Plan Builder. All rights reserved.</p>
+      </div>
+        
+  </footer>
