@@ -1,144 +1,114 @@
-<div class="about-section">
-    <div class="overlay">
-      <h1 class="title">Study Plan</h1>
-      <p class="breadcrumb">Home / Study Plan</p>
+<div class="studyplan-section">
+  <div class="overlay">
+    <h1 class="title">Study Plan</h1>
+    <p class="breadcrumb">Home / Study Plan</p>
+  </div>
+</div>
+
+<div class="container">
+  <h1>AI Study Plan Generator</h1>
+
+  <!-- Topic Input -->
+  <div class="form-group">
+    <label>Enter a topic you want to learn:</label>
+    <input
+      type="text"
+      placeholder="e.g., Machine Learning"
+      (input)="onInputChange($event, 'topic')"
+    />
+  </div>
+
+  <!-- Time per Day Input -->
+  <div class="form-group">
+    <label>Available Time per Day (hours):</label>
+    <div class="time-input">
+      <button (click)="decrementTime()">-</button>
+      <input type="number" [value]="timePerDay" readonly />
+      <button (click)="incrementTime()">+</button>
     </div>
   </div>
+
+  <!-- Complexity Level Selector -->
+  <div class="form-group">
+    <label>Complexity Level:</label>
+    <select (change)="onInputChange($event, 'complexity')">
+      <option value="beginner">Beginner</option>
+      <option value="intermediate">Intermediate</option>
+      <option value="advanced">Advanced</option>
+    </select>
+  </div>
+
+  <!-- Preferred Language Input -->
+  <div class="form-group">
+    <label>Preferred Language:</label>
+    <input
+      type="text"
+      placeholder="e.g., English"
+      (input)="onInputChange($event, 'language')"
+    />
+  </div>
+
+  <!-- Generate Button -->
+  <button class="generate-button" (click)="generateStudyPlan()">
+    Generate Study Plan
+  </button>
+
   
-  <div class="container">
-    <h1>AI Study Plan Generator</h1>
-  
-    <!-- Topic Input -->
-    <div class="form-group">
-      <label>Enter a topic you want to learn:</label>
-      <input
-        type="text"
-        placeholder="e.g., Machine Learning"
-        (input)="onInputChange($event, 'topic')"
-      />
+</div>
+
+<!-- Quiz Section -->
+<div *ngIf="showQuiz" class="quiz-container">
+  <h2>Daily Quiz</h2>
+  <p>Ready to test your knowledge on the topic?</p>
+  <button class="quiz-button" (click)="startQuiz()">Start Quiz</button>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Footer content remains unchanged -->
+    <div class="footer-left">
+      <h2>AI Study Plan Builder</h2>
+      <p>
+        Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals with
+        intelligent recommendations and personalized progress tracking.
+      </p>
     </div>
-  
-    <!-- Time per Day Input -->
-    <div class="form-group">
-      <label>Available Time per Day (hours):</label>
-      <div class="time-input">
-        <button (click)="decrementTime()">-</button>
-        <input
-          type="number"
-          [value]="timePerDay"
-          readonly
-        />
-        <button (click)="incrementTime()">+</button>
-      </div>
-    </div>
-  
-    <!-- Complexity Level Selector -->
-    <div class="form-group">
-      <label>Complexity Level:</label>
-      <select (change)="onInputChange($event, 'complexity')">
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
-      </select>
-    </div>
-  
-    <!-- Preferred Language Input -->
-    <div class="form-group">
-      <label>Preferred Language:</label>
-      <input
-        type="text"
-        placeholder="e.g., English"
-        (input)="onInputChange($event, 'language')"
-      />
-    </div>
-  
-    <!-- Generate Button -->
-    <button class="generate-button" (click)="generateStudyPlan()">
-      Generate Study Plan
-    </button>
-  
-    <!-- Suggested Study Materials Section -->
-    <div *ngIf="showSuggestions" class="suggestions-container">
-      <h2>Suggested Study Materials</h2>
+
+    <div class="footer-middle">
+      <h3>Explore</h3>
       <ul>
-        <li *ngFor="let material of suggestedMaterials">
-          <a [href]="material.link" target="_blank">{{ material.title }}</a> - {{ material.type }}
-        </li>
+        <li><a href="home">Home</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="studyplan">Study Plan</a></li>
+        <li><a href="progress">Progress</a></li>
       </ul>
-      <button class="skip-button" (click)="skipSuggestions()">Skip Suggestions</button>
-      <div class="center">
-        <button (click)="takeQuiz()">Take Quiz</button>
-      </div>
     </div>
-    
 
+    <div class="footer-resources">
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Study Tips</a></li>
+        <li><a href="#">Quiz Practice</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Help Center</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-right">
+      <h3>Get in Touch</h3>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Enter your name" required />
+        <input type="email" id="email" placeholder="Enter your email" required />
+        <textarea id="message" rows="3" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <!-- Left Section -->
-      <div class="footer-left">
-        <h2>AI Study Plan Builder</h2>
-        <p>
-          Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals with intelligent recommendations and personalized progress tracking.
-        </p>
-      </div>
-  
-      <!-- Middle Section - Explore -->
-      <div class="footer-middle">
-        <h3>Explore</h3>
-        <ul>
-          <li><a href="home">Home</a></li>
-          <li><a href="login">login</a></li>
-          <li><a href="about">About</a></li>
-          <li><a href="dashboard">Dashboard</a></li>
-          <li><a href="studyplan">Study Plan</a></li>
-          <li><a href="progress">Progress</a></li>
-        </ul>
-      </div>
-  
-      <!-- Middle Section - Resources -->
-      <div class="footer-resources">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Study Tips</a></li>
-          <li><a href="#">Quiz Practice</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Help Center</a></li>
-        </ul>
-      </div>
-  
-      <!-- Right Section - Get in Touch -->
-      <div class="footer-right">
-        <h3>Get in Touch</h3>
-        <form id="contactForm">
-          <input
-            type="text"
-            id="name"
-            placeholder="Enter your name"
-            required
-          />
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
-          <textarea
-            id="message"
-            rows="3"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-    </div>
-  
-    <div class="footer-bottom">
-      <p>© 2024 AI Study Plan Builder. All rights reserved.</p>
-    </div>
-  </footer>
-  
-  
+  <div class="footer-bottom">
+    <p>© 2024 AI Study Plan Builder. All rights reserved.</p>
+  </div>
+</footer>
