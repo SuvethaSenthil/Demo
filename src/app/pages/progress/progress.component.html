@@ -5,61 +5,52 @@
   </div>
 </div>
 
-<div class="dashboard">
-  <h1>Progress Dashboard</h1>
-
-  <!-- Daily Progress Section -->
-  <div class="progress-section">
-    <div class="daily-progress">
-      <h2>Daily Progress</h2>
-      <div class="circle">
-        <span>{{ dailyProgress }}%</span>
+<div class="quiz-section">
+  <h1 class="quiz-title">Quiz Performance</h1>
+  <div class="quiz-card">
+    <div class="quiz-info">
+      <div class="quiz-metric">
+        <h2>Total Questions</h2>
+        <p [class.animate-number]="true">{{ totalQuestions }}</p>
+      </div>
+      <div class="quiz-metric">
+        <h2>Correct Answers</h2>
+        <p [class.animate-number]="true">{{ correctAnswers }}</p>
+      </div>
+      <div class="quiz-metric">
+        <h2>Score</h2>
+        <p class="quiz-score">{{ quizScore }}/100</p>
       </div>
     </div>
-
-    <!-- Quiz Score Section -->
-    <div class="quiz-score">
-      <h2>Quiz Score</h2>
-      <p>Total Questions: {{ totalQuestions }}</p>
-      <p>Correct Answers: {{ correctAnswers }}</p>
-      <p>Score: {{ quizScore }}/100</p>
-    </div>
-  </div>
-
-  <!-- Weekly Progress Section -->
-  <div class="weekly-progress">
-    <h2>Weekly Progress</h2>
-    <div *ngFor="let day of weekProgress" class="progress-bar-container">
-      <span class="day-name">{{ day.name }}</span>
-      <div class="bar">
-        <div
-          class="fill"
-          [style.width]="day.progress + '%'"
-          [style.backgroundColor]="day.progress > 50 ? '#4caf50' : '#ff5722'"
-        ></div>
+    <div class="progress-animation">
+      <div
+        class="progress-circle"
+        [style.background]="'conic-gradient(#4caf50 ' + quizScore * 3.6 + 'deg, #e0e0e0 0deg)'"
+      >
+        <span>{{ quizScore }}%</span>
       </div>
-      <span class="progress-value">{{ day.progress }}%</span>
     </div>
   </div>
 </div>
 
 
-<!-- Footer Section -->
+
 <footer class="footer">
   <div class="footer-container">
+    <!-- Left Section -->
     <div class="footer-left">
       <h2>AI Study Plan Builder</h2>
       <p>
-        Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals with
-        intelligent recommendations and personalized progress tracking.
+        Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals with intelligent recommendations and personalized progress tracking.
       </p>
     </div>
 
+    <!-- Middle Section - Explore -->
     <div class="footer-middle">
       <h3>Explore</h3>
       <ul>
         <li><a href="home">Home</a></li>
-        <li><a href="login">Login</a></li>
+        <li><a href="login">login</a></li>
         <li><a href="about">About</a></li>
         <li><a href="dashboard">Dashboard</a></li>
         <li><a href="studyplan">Study Plan</a></li>
@@ -67,10 +58,11 @@
       </ul>
     </div>
 
+    <!-- Middle Section - Resources -->
     <div class="footer-resources">
       <h3>Resources</h3>
       <ul>
-        <li><a href="#">About</a></li>
+        <li><a href="#">About us</a></li>
         <li><a href="#">Study Tips</a></li>
         <li><a href="#">Quiz Practice</a></li>
         <li><a href="#">Privacy Policy</a></li>
@@ -78,17 +70,35 @@
       </ul>
     </div>
 
+    <!-- Right Section - Get in Touch -->
     <div class="footer-right">
       <h3>Get in Touch</h3>
       <form id="contactForm">
-        <input type="text" placeholder="Enter your name" required />
-        <input type="email" placeholder="Enter your email" required />
-        <textarea rows="3" placeholder="Your Message" required></textarea>
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+        <textarea
+          id="message"
+          rows="3"
+          placeholder="Your Message"
+          required
+        ></textarea>
         <button type="submit">Send Message</button>
       </form>
     </div>
   </div>
+
   <div class="footer-bottom">
     <p>© 2024 AI Study Plan Builder. All rights reserved.</p>
   </div>
 </footer>
+
