@@ -13,8 +13,12 @@ export class StudyplanComponent {
   timePerDay: number = 1;
   complexity: string = 'beginner';
   language: string = '';
-  showSuggestions: boolean = false;
-  suggestedMaterials: { title: string; link: string; type: string }[] = [];
+  
+  showQuiz: boolean = false;
+  
+  
+
+/*constructor(private appService:AppService){}*/
 
   onInputChange(event: Event, field: string): void {
     const value = (event.target as HTMLInputElement).value;
@@ -54,23 +58,32 @@ export class StudyplanComponent {
       language: this.language
     };
 
+
+     /*const studyPlan = {
+      topic: this.topic,
+      timePerDay: this.timePerDay,
+      complexity: this.complexity,
+      language: this.language
+    };
+    this.appService.generateplan(studyPlan).subscribe(response=>{
+      console.log(response);
+    },error=>console.log(error))
+    
     console.log('Generated Study Plan:', studyPlan);
-    this.showSuggestions = true;
+    this.showSuggestions = true;*/
 
-    // Mock study material suggestions based on topic
-    this.suggestedMaterials = [
-      { title: 'Intro to ' + this.topic, link: '#', type: 'Article' },
-      { title: this.topic + ' Tutorial', link: '#', type: 'Video' },
-      { title: 'Advanced ' + this.topic, link: '#', type: 'Course' }
-    ];
+
+
+    console.log('Generated Study Plan:', studyPlan);
+    this.showQuiz = true;
+
+    
   }
 
-  skipSuggestions(): void {
-    this.showSuggestions = false;
-  }
+  
 
-  takeQuiz(): void {
+  startQuiz(): void {
+    console.log('Quiz started.');
     window.location.href = 'quiz';
-    this.showSuggestions=true;
   }
 }
