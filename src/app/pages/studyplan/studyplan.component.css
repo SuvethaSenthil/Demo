@@ -9,7 +9,7 @@ body {
 }
 
 /* Main section styling */
-.about-section {
+.studyplan-section {
   position: relative;
   width: 100%;
   height: 500px;
@@ -218,75 +218,48 @@ input::placeholder {
 
 
 
-/* Suggested Materials Styling */
-.suggestions-container {
-  margin-top: 2rem;
+
+
+/* Quiz Container */
+.quiz-container {
+  margin: 2rem auto;
   padding: 1.5rem;
-  background-color: #e6f4f1;
+  max-width: 500px;
+  background: #e6f4f1;
   border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
   animation: fadeIn 0.5s ease-in;
 }
 
-.suggestions-container h2 {
+.quiz-container h2 {
   font-size: 1.5rem;
-  color: #2c7a7b;
+  color: #2c3e50;
   margin-bottom: 1rem;
 }
 
-.suggestions-container ul {
-  list-style-type: none;
-  padding: 0;
+.quiz-container p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #2d3748;
 }
 
-.suggestions-container li {
-  margin: 0.5rem 0;
-}
-
-.suggestions-container a {
-  color: #2b6cb0;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.suggestions-container a:hover {
-  text-decoration: underline;
-}
-
-.skip-button {
-  background-color: #e53e3e;
+.quiz-button {
+  background: linear-gradient(90deg, #4299e1, #667eea);
   color: white;
-  padding: 0.5rem 1rem;
-  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
   border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 1rem;
-}
-
-.skip-button:hover {
-  background-color: #c53030;
-}
-
-
-
-.center button {
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 50PX;
   border: none;
-  background-color: #007BFF;
-  color: white;
-  border-radius: 5px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.center button:hover {
-  background-color: #0056b3;
+.quiz-button:hover {
+  background: linear-gradient(90deg, #3182ce, #5a67d8);
 }
+
+
 
 /* General Footer Styles */
 .footer {
