@@ -1,79 +1,159 @@
 <div class="about-section">
-  <div class="overlay">
-    <h1 class="title">About Us</h1>
-    <p class="breadcrumb">Home / About</p>
+    <div class="overlay">
+      <h1 class="title">About Us</h1>
+      <p class="breadcrumb">Home / About</p>
+    </div>
   </div>
-</div>
 
-<!-- Main Content Section -->
+
+  <!-- Main Content Section -->
 <section class="main-content">
-  <h2>How to use our daily school planner and schedule maker</h2>
-  <p><em>When is that exam? How can I study more effectively? Do I have any homework?</em></p>
-  <p>
-    <strong>MyStudyLife</strong>: Your Personal Academic Assistant 🤓 With notifications and reminders, you’ll never need to ask these questions again. MyStudyLife (MSL) worries about this for you. By keeping track of your study life and reminding you of all of your commitments, you can focus on what really matters.
-  </p>
-</section>
+    <h2>How to use our daily school planner and schedule maker</h2>
+    <p><em>When is that exam? How can I study more effectively? Do I have any homework?</em></p>
+    <p>
+      <strong>MyStudyLife</strong>: Your Personal Academic Assistant 🤓 With notifications and reminders, you’ll never need to ask these questions again. MyStudyLife (MSL) worries about this for you. By keeping track of your study life and reminding you of all of your commitments, you can focus on what really matters.
+    </p>
+  </section>
 
-  <div class="outer-wrapper">
-    <div class="outer-frame">
-      <div class="container">
-        <!-- First Half: Image Section -->
-        <div class="image-section">
-          <img src="https://img.freepik.com/free-vector/waterfall-method-concept-illustration_114360-9829.jpg?t=st=1731059705~exp=1731063305~hmac=770e1cca6239d52619534af7505fe88d7d31670b552e3eddb2b0a8117db80536&w=1380" alt="Main Image">
-        </div>
-  
-        <!-- Second Half: Text Section with Grid of Boxes -->
-        <div class="text-section">
-          <div class="text-content">
-            <h1>Your Study Companion</h1>
-            <p>“Stay organized with a planner, scheduler, task manager, and quizzes designed to support your study journey. Track your progress, monitor scores, and achieve goals efficiently.
-              ”</p>
+
+
+
+  <div class="outer-framee">
+    <div class="containerr">
+      <div class="image-section">
+        <img src="https://www.shutterstock.com/image-photo/onwards-upwards-path-success-man-600nw-2455239569.jpg" alt="Two women viewing laptop">
+      </div>
+      <div class="text-section">
+        <div class="text-content">
+          <h1>We provide value to our clients</h1>
+          <div class="horizontal-text">
+            <p>
+              “The consulting firm provided exceptional service and valuable insights that significantly contributed to
+              the success of our project. Their team demonstrated deep expertise in the field, delivering innovative solutions
+              tailored to our specific needs.”
+            </p>
             
           </div>
-          
-          <!-- Grid of Animated Boxes -->
-          <div class="grid-container">
-            <div class="box" *ngFor="let box of boxes" [ngStyle]="{'background-image': 'url(' + box.image + ')'}">
-              <div class="box-content">
-                <span>{{ box.label }}</span>
-              </div>
-            </div>
+          <div class="horizontal-text">
+            
+            <p>- Nat Reynolds, Developer, Co-Founder</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   
-<!-- Footer Section -->
-<footer>
-  <div class="footer-container">
-    <div class="contact-info">
-      <h2>Do You Want to Contact Us? Don’t Hesitate!</h2>
-      <p>At Study Plan Builder, we are committed to helping you achieve your learning goals. Whether you need help with your study plan or just want to connect, we are here for you.</p>
 
-      <h3>Contact Us</h3>
-      <p>Address: Study Plan Builder HQ, Bangalore</p>
-      <p>Phone: 042888 999</p>
-      <p>Email: studyplanbuilder"&#64;"gmail.com</p>
 
-      <div class="social">
-        <h3>Follow us:</h3>
-      
+
+
+
+
+  <section class="w3_stats py-5" id="stats">
+    <div class="container py-lg-5 py-md-4 py-2">
+        <div class="title-content text-center">
+            <h6 class="title-small">Our Facts</h6>
+            <h3 class="title-big">Why We Are Unique? Have a Look</h3>
+        </div>
+        <div class="w3-stats d-flex justify-content-center mt-5">
+            <div class="counter">
+                <span class="fa fa-download"></span>
+                <div id="totalDownloads" class="timer count-title count-number mt-3">0</div>
+                <p class="count-text">Total User</p>
+            </div>
+            <div class="counter mx-4">
+                <span class="fa fa-book"></span>
+                <div id="coursesCompleted" class="timer count-title count-number mt-3">0</div>
+                <p class="count-text">Plan Viewer</p>
+            </div>
+            <div class="counter mx-4">
+                <span class="fa fa-smile-o"></span>
+                <div id="happyCustomers" class="timer count-title count-number mt-3">0</div>
+                <p class="count-text">Happy Learners</p>
+            </div>
+            <div class="counter mx-4">
+                <span class="fa fa-users"></span>
+                <div id="dailyCustomers" class="timer count-title count-number mt-3">0</div>
+                <p class="count-text">Daily Learners</p>
+            </div>
+        </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+
+
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Left Section -->
+      <div class="footer-left">
+        <h2>AI Study Plan Builder</h2>
+        <p>
+          Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals with intelligent recommendations and personalized progress tracking.
+        </p>
+      </div>
+  
+      <!-- Middle Section - Explore -->
+      <div class="footer-middle">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li><a href="login">login</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="dashboard">Dashboard</a></li>
+          <li><a href="studyplan">Study Plan</a></li>
+          <li><a href="progress">Progress</a></li>
+        </ul>
+      </div>
+  
+      <!-- Middle Section - Resources -->
+      <div class="footer-resources">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Study Tips</a></li>
+          <li><a href="#">Quiz Practice</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Help Center</a></li>
+        </ul>
+      </div>
+  
+      <!-- Right Section - Get in Touch -->
+      <div class="footer-right">
+        <h3>Get in Touch</h3>
+        <form id="contactForm">
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+            required
+          />
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+          <textarea
+            id="message"
+            rows="3"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </div>
-
-    <div class="newsletter">
-      <h3>Subscribe to Our Newsletter</h3>
-      <p>Enter your email and receive the latest updates, tips, and special offers from us. Subscribe & Get $20 on Your First Study Plan Purchase.</p>
-      <form id="subscribeForm">
-        <input type="email" id="email" placeholder="Enter your email" required>
-        <button type="submit">Subscribe</button>
-        <p id="formMessage"></p>
-      </form>
+  
+    <div class="footer-bottom">
+      <p>© 2024 AI Study Plan Builder. All rights reserved.</p>
     </div>
-  </div>
-</footer>
-
-
-
+  </footer>
+  
+  
