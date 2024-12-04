@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { AppService } from '../../shared/service/app/app.service';
 
 @Component({
   selector: 'app-ai-study-plan-generator',
@@ -18,7 +19,7 @@ export class StudyplanComponent {
   
   
 
-/*constructor(private appService:AppService){}*/
+constructor(private appService:AppService){}
 
   onInputChange(event: Event, field: string): void {
     const value = (event.target as HTMLInputElement).value;
@@ -53,21 +54,21 @@ export class StudyplanComponent {
 
     const studyPlan = {
       topic: this.topic,
-      timePerDay: this.timePerDay,
+      timeConstraint: this.timePerDay,
       complexity: this.complexity,
       language: this.language
     };
 
-
+    this.appService.generateplan(studyPlan).subscribe(response=>{
+      console.log(response);
+    },error=>console.log(error))
+    
      /*const studyPlan = {
       topic: this.topic,
       timePerDay: this.timePerDay,
       complexity: this.complexity,
       language: this.language
     };
-    this.appService.generateplan(studyPlan).subscribe(response=>{
-      console.log(response);
-    },error=>console.log(error))
     
     console.log('Generated Study Plan:', studyPlan);
     this.showSuggestions = true;*/
