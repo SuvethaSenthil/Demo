@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AppService, LoginData } from '../../shared/service/app/app.service';
+import { TokenService } from '../../shared/service/token/token.service';
 
 @Component({
   selector: 'app-login',
-  imports:[CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
@@ -11,37 +14,54 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   forgotPasswordContainer: boolean = false;
   otpVerificationContainer: boolean = false;
-
-  logIn() {
-    const email = (document.getElementById('email') as HTMLInputElement)?.value;
-    const password = (document.getElementById('password') as HTMLInputElement)?.value;
-    let isValid = true;
-
-    if (!email) {
-      this.showError('email-error', 'Email is required');
-      isValid = false;
-    } else if (!this.validateEmail(email)) {
-      this.showError('email-error', 'Enter a valid email address');
-      isValid = false;
-    } else {
-      this.hideError('email-error');
-    }
-
-    if (!password) {
-      this.showError('password-error', 'Password is required');
-      isValid = false;
-    } else if (!this.validatePassword(password)) {
-      this.showError('password-error', 'Password must be at least 6 characters with a number and a special symbol');
-      isValid = false;
-    } else {
-      this.hideError('password-error');
-    }
-
-    if (isValid) {
-      alert('Login successful!');
-    }
+  loginForm: FormGroup;
+  constructor(private fb: FormBuilder, private appService: AppService, private tokenService: TokenService) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
+  logIn() {
+    if (this.loginForm.valid) {
+      console.log('Form Value:', this.loginForm.value);
+      const payload: LoginData = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password
+      }
+      this.appService.login(payload).subscribe((res: any) => {
+        console.log("Successful response value is : ", res);
+        /**
+         *  set the token value from the response after API call.
+         * Here for example I mentioned as res.token assign the actual token here.
+         */
+        this.tokenService.setToken(res.token);
+      }, err => {
+        console.log("Handled the error logic here");
+      })
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+  getEmailErrorMessage(): string {
+    const emailControl = this.loginForm.get('email');
+    if (emailControl?.hasError('required')) {
+      return 'Email is required.';
+    } else if (emailControl?.hasError('email')) {
+      return 'Please enter a valid email.';
+    }
+    return '';
+  }
+
+  getPasswordErrorMessage(): string {
+    const passwordControl = this.loginForm.get('password');
+    if (passwordControl?.hasError('required')) {
+      return 'Password is required.';
+    } else if (passwordControl?.hasError('minlength')) {
+      return 'Password must be at least 6 characters long.';
+    }
+    return '';
+  }
   validateEmail(email: string): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
