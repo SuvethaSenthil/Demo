@@ -1,8 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AppService } from '../../shared/service/app/app.service';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
+  imports:[CommonModule,ReactiveFormsModule],
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css'],
 })
@@ -41,6 +45,35 @@ export class QuizComponent {
     },
   ];
 
+  quizForm!: FormGroup;
+
+  // Dynamic Questions Array
+
+
+  constructor(private fb: FormBuilder, private appService: AppService) {}
+
+  ngOnInit(): void {
+    // Initialize the form dynamically
+    this.quizForm = this.fb.group(
+      this.questions.reduce((controls:any, question) => {
+        controls[question.id] = ['', Validators.required]; // Add a required validator
+        return controls;
+      }, {})
+    );
+  }
+
+  // Handle Form Submission
+  onSubmit(): void {
+    if (this.quizForm.valid) {
+      this.appService.validateQuiz(this.quizForm.value).subscribe(res => {
+        console.log("Handle success logic here: ",res);
+      }, err => {
+        console.log("Handle the error logic here");
+      });
+    } else {
+      console.log('Please answer all questions.');
+    }
+  }
   // Method to save answers
   saveAnswer(questionId: string, selectedOption: string): void {
     this.answers[questionId] = selectedOption;
