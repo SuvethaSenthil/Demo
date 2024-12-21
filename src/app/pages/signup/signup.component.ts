@@ -75,6 +75,7 @@ export class SignupComponent {
     }
     this.appService.register(payload).subscribe(res => {
       console.log(res);
+      this.router.navigate(['/login']);
       this.snackBar.open(`${payload.name} has registered successfully`, 'close', {
         duration:0,
         verticalPosition:'top',
