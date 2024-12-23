@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AppService, LoginData } from '../../shared/service/app/app.service';
 import { TokenService } from '../../shared/service/token/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   forgotPasswordContainer: boolean = false;
   otpVerificationContainer: boolean = false;
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private appService: AppService, private tokenService: TokenService) {
+  constructor(private fb: FormBuilder, private router: Router, private appService: AppService, private tokenService: TokenService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -30,7 +31,8 @@ export class LoginComponent {
         password: this.loginForm.value.password
       }
       this.appService.login(payload).subscribe((res: any) => {
-        console.log("Successful response value is : ", res);
+        console.log("Successful response value is : ", res.token);
+        this.router.navigate(['/dashboard']);
         /**
          *  set the token value from the response after API call.
          * Here for example I mentioned as res.token assign the actual token here.
