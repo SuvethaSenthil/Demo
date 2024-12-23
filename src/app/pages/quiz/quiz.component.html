@@ -3,7 +3,7 @@
   <div class="quiz-container">
     <h1>Quiz Application</h1>
     <form id="quiz-form">
-      <!-- Question 1 -->
+
       <div class="question">
         <h2>1. Which among the following converts primitive data types to object types in Java?</h2>
         <div class="option"><input type="radio" id="q1-wrapper" name="q1" value="Wrapper Class"><label for="q1-wrapper">Wrapper Class</label></div>
@@ -12,7 +12,7 @@
         <div class="option"><input type="radio" id="q1-adaptor" name="q1" value="Adaptor Class"><label for="q1-adaptor">Adaptor Class</label></div>
       </div>
 
-      <!-- Question 2 -->
+      
       <div class="question">
         <h2>2. What is the size of an integer in Java?</h2>
         <div class="option"><input type="radio" id="q2-2bytes" name="q2" value="2 bytes"><label for="q2-2bytes">2 bytes</label></div>
@@ -21,7 +21,7 @@
         <div class="option"><input type="radio" id="q2-16bytes" name="q2" value="16 bytes"><label for="q2-16bytes">16 bytes</label></div>
       </div>
 
-      <!-- Question 3 -->
+      
       <div class="question">
         <h2>3. Who invented Java programming language?</h2>
         <div class="option"><input type="radio" id="q3-james" name="q3" value="James Gosling"><label for="q3-james">James Gosling</label></div>
@@ -30,7 +30,7 @@
         <div class="option"><input type="radio" id="q3-guido" name="q3" value="Guido van Rossum"><label for="q3-guido">Guido van Rossum</label></div>
       </div>
 
-      <!-- Question 4 -->
+      
       <div class="question">
         <h2>4. Which of the following is not a Java feature?</h2>
         <div class="option"><input type="radio" id="q4-object" name="q4" value="Object-oriented"><label for="q4-object">Object-oriented</label></div>
@@ -38,8 +38,7 @@
         <div class="option"><input type="radio" id="q4-slow" name="q4" value="Slow"><label for="q4-slow">Slow</label></div>
         <div class="option"><input type="radio" id="q4-robust" name="q4" value="Robust"><label for="q4-robust">Robust</label></div>
       </div>
-
-      <!-- Question 5 -->
+      
       <div class="question">
         <h2>5. What does JVM stand for?</h2>
         <div class="option"><input type="radio" id="q5-java-machine" name="q5" value="Java Virtual Machine"><label for="q5-java-machine">Java Virtual Machine</label></div>
@@ -48,12 +47,31 @@
         <div class="option"><input type="radio" id="q5-java-virtual" name="q5" value="Java Variable Manager"><label for="q5-java-virtual">Java Variable Manager</label></div>
       </div>
 
-      <!-- Buttons -->
+      
       <div class="buttons">
         <button type="button" class="reset-btn" id="reset-btn">Reset</button>
         <button type="button" class="save-btn" id="save-btn">Save</button>
         <button type="button" class="finish-btn" id="finish-btn">Finish</button>
       </div>
+    </form> 
+    
+    <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+      <div *ngFor="let question of questions; let i = index" class="question">
+        <h2>{{ i + 1 }}. {{ question.question }}</h2>
+        <div class="option" *ngFor="let option of question.options">
+          <input
+            type="radio"
+            [id]="question.id + '-' + option"
+            [formControlName]="question.id"
+            [value]="option"
+          />
+          <label [for]="question.id + '-' + option">{{ option }}</label>
+        </div>
+      </div>
+    
+      <button type="submit" [disabled]="!quizForm.valid">Submit</button>
     </form>
+    
+    
     <p id="response-message" class="response-message"></p>
   </div>
