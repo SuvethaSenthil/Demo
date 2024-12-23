@@ -1,114 +1,78 @@
-<div class="studyplan-section">
-  <div class="overlay">
-    <h1 class="title">Study Plan</h1>
-    <p class="breadcrumb">Home / Study Plan</p>
-  </div>
-</div>
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppService, UserData } from '../../shared/service/app/app.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+@Component({
+  selector: 'app-signup',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatSnackBarModule],
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css'],
+})
+export class SignupComponent {
+  contactForm: FormGroup;
+  signUpForm: FormGroup;
+  constructor(private router: Router, private fb: FormBuilder, private appService: AppService, private snackBar: MatSnackBar) {
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', [Validators.required]],
+    });
+    this.signUpForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
+    });
+  }
 
-<div class="container">
-  <h1>AI Study Plan Generator</h1>
+  onSubmit() {
+    console.log(this.contactForm.value)
+  }
 
-  <!-- Topic Input -->
-  <div class="form-group">
-    <label>Enter a topic you want to learn:</label>
-    <input
-      type="text"
-      placeholder="e.g., Machine Learning"
-      (input)="onInputChange($event, 'topic')"
-    />
-  </div>
 
-  <!-- Time per Day Input -->
-  <div class="form-group">
-    <label>Available Time per Day (hours):</label>
-    <div class="time-input">
-      <button (click)="decrementTime()">-</button>
-      <input type="number" [value]="timePerDay" readonly />
-      <button (click)="incrementTime()">+</button>
-    </div>
-  </div>
+  signUp() {
+    console.log(this.signUpForm.value);
+    const payload: UserData = {
+      email: this.signUpForm.value.email,
+      name: this.signUpForm.value.name,
+      password: this.signUpForm.value.password
+    }
+    this.appService.register(payload).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['/login']);
+      this.snackBar.open(`${payload.name} has registered successfully`, 'close', {
+        duration:0,
+        verticalPosition:'top',
+        horizontalPosition:'right'
+      });
+    }, err => {
+      this.snackBar.open(err.error.error, 'close', {
+        duration:0,
+        verticalPosition:'top',
+        horizontalPosition:'right'
+      });
+      console.log(err.error.error);
+    })
+  }
+  displayError(id: string, message: string) {
+    const errorDiv = document.getElementById(`${id}-error`);
+    if (errorDiv) errorDiv.textContent = message;
+  }
 
-  <!-- Complexity Level Selector -->
-  <div class="form-group">
-    <label>Complexity Level:</label>
-    <select (change)="onInputChange($event, 'complexity')">
-      <option value="beginner">Beginner</option>
-      <option value="intermediate">Intermediate</option>
-      <option value="advanced">Advanced</option>
-    </select>
-  </div>
+  clearError(id: string) {
+    const errorDiv = document.getElementById(`${id}-error`);
+    if (errorDiv) errorDiv.textContent = '';
+  }
 
-  <!-- Preferred Language Input -->
-  <div class="form-group">
-    <label>Preferred Language:</label>
-    <input
-      type="text"
-      placeholder="e.g., English"
-      (input)="onInputChange($event, 'language')"
-    />
-  </div>
+  navigateToLogin() {
+    this.router.navigate(['/login']); // Replace '/login' with the actual route to the login page
+  }
 
-  <!-- Generate Button -->
-  <button class="generate-button" (click)="generateStudyPlan()">
-    Generate Study Plan
-  </button>
-
-  
-</div>
-
-<!-- Quiz Section -->
-<div *ngIf="showQuiz" class="quiz-container">
-  <h2>Daily Quiz</h2>
-  <p>Ready to test your knowledge on the topic?</p>
-  <button class="quiz-button" (click)="startQuiz()">Start Quiz</button>
-</div>
-
-<footer class="footer">
-  <div class="footer-container">
-    <!-- Footer content remains unchanged -->
-    <div class="footer-left">
-      <h2>AI Study Plan Builder</h2>
-      <p>
-        Unlock your potential with our AI-powered study planning tool. Build, track, and achieve your goals with
-        intelligent recommendations and personalized progress tracking.
-      </p>
-    </div>
-
-    <div class="footer-middle">
-      <h3>Explore</h3>
-      <ul>
-        <li><a href="home">Home</a></li>
-        <li><a href="login">Login</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="dashboard">Dashboard</a></li>
-        <li><a href="studyplan">Study Plan</a></li>
-        <li><a href="progress">Progress</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-resources">
-      <h3>Resources</h3>
-      <ul>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Study Tips</a></li>
-        <li><a href="#">Quiz Practice</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Help Center</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-right">
-      <h3>Get in Touch</h3>
-      <form id="contactForm">
-        <input type="text" id="name" placeholder="Enter your name" required />
-        <input type="email" id="email" placeholder="Enter your email" required />
-        <textarea id="message" rows="3" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2024 AI Study Plan Builder. All rights reserved.</p>
-  </div>
-</footer>
+  subscribe(event: Event) {
+    event.preventDefault();
+    console.log('Subscribed to newsletter');
+  }
+}
