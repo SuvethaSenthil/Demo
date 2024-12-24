@@ -8,7 +8,7 @@ import { LoginResponse } from '../../model/login.model';
 })
 export class AppService {
 
-  private api_url = 'http://localhost:3000';
+  private api_url = 'http://localhost:5000';
   private tokenService = inject(TokenService);
 
   constructor(private http: HttpClient, ) { }
@@ -28,8 +28,9 @@ export class AppService {
 
   /*constructor(private http:HttpClient) { }*/
 
-  generateplan(data: any) {
-    const url = "http://localhost:3000/plan/generate-plan";
+  
+  generatePlan(data: any) {
+    const url = "http://localhost:5000/ai/chat";
     console.log(this.tokenService.getToken())
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.tokenService.getToken()}`,
@@ -37,7 +38,7 @@ export class AppService {
     return this.http.post(url, data, {headers});
   }
   validateQuiz(data: any) {
-    const url = "http://localhost:3000"+"add the quiz API path here"; //I'm not sure to to call which API endpoint.
+    const url = "http://localhost:5000"+"add the quiz API path here"; //I'm not sure to to call which API endpoint.
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.tokenService.getToken()}`,
     });
