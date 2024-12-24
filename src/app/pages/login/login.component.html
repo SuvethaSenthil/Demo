@@ -25,26 +25,14 @@
     <button (click)="logIn()">Log In</button>
   </div>
   
-  <div class="forgot-password-section">
-    <a href="#" (click)="showForgotPasswordModal($event)">Forgot Password?</a>
-  </div>
+  
 
   <div class="signup-link">
     <p>Don't have an account? <a href="signup">Sign Up</a></p>
   </div>
 </div>
 
-<div *ngIf="forgotPasswordContainer" class="forgot-password-container">
-  <label for="forgot-email">Enter your email:</label>
-  <input type="email" id="forgot-email" placeholder="Email" />
-  <button (click)="sendOtp()">Send OTP</button>
-</div>
 
-<div *ngIf="otpVerificationContainer" class="otp-verification-container">
-  <label for="otp-input">Enter OTP:</label>
-  <input type="text" id="otp-input" placeholder="OTP" />
-  <button (click)="verifyOtp()">Verify OTP</button>
-</div>
 
 <footer class="footer">
   <div class="footer-container">
