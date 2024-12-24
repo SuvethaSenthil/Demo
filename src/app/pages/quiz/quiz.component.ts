@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppService } from '../../shared/service/app/app.service';
 
 @Component({
   selector: 'app-quiz',
   standalone: true,
-  imports:[CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css'],
 })
@@ -51,51 +51,71 @@ export class QuizComponent {
   // Dynamic Questions Array
 
 
-  constructor(private fb: FormBuilder, private appService: AppService) {}
+  constructor(private fb: FormBuilder, private appService: AppService) {
+    this.quizForm = this.fb.group({
+      questions: this.fb.array([]) // Empty FormArray to be populated dynamically
+    });
+  }
 
   ngOnInit(): void {
     const payload = {
-      text :"Generate 10  mcqs on Java"
+      text: "Generate 10  mcqs on Java"
     }
     this.appService.generateQuiz(payload).subscribe((res: any) => {
       console.log(res)
       const data = this.parseInputData(res.newQuiz.text.split('**'));
-      console.log(data);
+      console.log(data, this.parsedQuestions, this.parsedAnswers);
+  
+      this.quizForm = this.fb.group({
+        questions: this.fb.array(this.parsedQuestions.map(() => this.createQuestionGroup()))
+      });
+      // this.populateQuestions();
     });
-    // Initialize the form dynamically
-    this.quizForm = this.fb.group(
-      this.questions.reduce((controls:any, question) => {
-        controls[question.id] = ['', Validators.required]; // Add a required validator
-        return controls;
-      }, {})
-    );
-  }
 
+  }
+  private createQuestionGroup(): FormGroup {
+    return this.fb.group({
+      answer: [''] // Default value for answer is empty
+    });
+  }
+  
+  get questionsArray(): FormArray {
+    console.log("working here")
+    return this.quizForm.get('questions') as FormArray;
+  }
   parseInputData(data: string[]): void {
+
     let isAnswerSection = false;
 
     for (let i = 0; i < data.length; i++) {
       const text = data[i].trim();
 
       // Check if we've reached the answer section
-      if (text.toLowerCase().startsWith('answer key')) {
+      if (text.toLowerCase().startsWith('answer')) {
         isAnswerSection = true;
         continue; // Skip "Answer Key:" line
       }
-console.log(text, isAnswerSection);
       if (isAnswerSection) {
         // Process answers
+        console.log(text);
         const answerMatches = text.match(/(\d+)\.\s+([a-d]\))/g); // Match "1. c)", "2. b)", etc.
         if (answerMatches) {
           answerMatches.forEach((match) => {
-            const [_, questionNumber, answer] = match.match(/(\d+)\.\s+([a-d]\))/)!;
-            this.parsedAnswers.push({
-              questionNumber: parseInt(questionNumber, 10),
-              answer,
-            });
+            const matchResult = match.match(/(\d+)\.\s+([a-d])\)\s+([^\r\n]+)/);
+  
+            if (matchResult) {
+              const [_, questionNumber, option, answerText] = matchResult;
+              console.log(option, answerText);
+          
+              this.parsedAnswers.push({
+                questionNumber: parseInt(questionNumber, 10),
+                answer: answerText.trim(),
+              });
+            }
           });
         }
       } else {
+        console.log("question section");
         // Process questions and options
         const questionText = data[i].trim();
         const optionsText = data[i + 1]?.trim();
@@ -114,15 +134,8 @@ console.log(text, isAnswerSection);
 
   // Handle Form Submission
   onSubmit(): void {
-    if (this.quizForm.valid) {
-      this.appService.validateQuiz(this.quizForm.value).subscribe(res => {
-        console.log("Handle success logic here: ",res);
-      }, err => {
-        console.log("Handle the error logic here");
-      });
-    } else {
-      console.log('Please answer all questions.');
-    }
+    console.log(this.quizForm.valid,this.quizForm.value);
+    
   }
   // Method to save answers
   saveAnswer(questionId: string, selectedOption: string): void {
