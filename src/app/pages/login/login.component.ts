@@ -33,6 +33,9 @@ export class LoginComponent {
       this.appService.login(payload).subscribe((res: any) => {
         console.log("Successful response value is : ", res.token);
         this.router.navigate(['/dashboard']);
+
+        localStorage.setItem('userId',res.userId);
+        localStorage.getItem('userId')
         /**
          *  set the token value from the response after API call.
          * Here for example I mentioned as res.token assign the actual token here.
@@ -84,28 +87,5 @@ export class LoginComponent {
     if (errorElement) errorElement.innerText = '';
   }
 
-  showForgotPasswordModal(event: Event) {
-    event.preventDefault();
-    this.forgotPasswordContainer = true;
-    this.otpVerificationContainer = false;
-  }
-
-  sendOtp() {
-    const email = (document.getElementById('forgot-email') as HTMLInputElement)?.value;
-    if (this.validateEmail(email)) {
-      alert('OTP sent successfully');
-      this.showOtpVerification();
-    } else {
-      alert('Please enter a valid email');
-    }
-  }
-
-  showOtpVerification() {
-    this.otpVerificationContainer = true;
-    this.forgotPasswordContainer = false;
-  }
-
-  verifyOtp() {
-    alert('OTP verified successfully');
-  }
+  
 }
