@@ -13,7 +13,6 @@ export class StudyplanComponent {
   topic: string = '';
   timePerDay: number = 1;
   complexity: string = 'beginner';
-  language: string = '';
   
   showQuiz: boolean = false;
   
@@ -30,9 +29,6 @@ constructor(private appService:AppService){}
       case 'complexity':
         this.complexity = value;
         break;
-      case 'language':
-        this.language = value;
-        break;
     }
   }
 
@@ -46,39 +42,23 @@ constructor(private appService:AppService){}
     }
   }
 
-  generateStudyPlan(): void {
-    if (!this.topic || !this.language) {
+  generatePlan(): void {
+    if (!this.topic) {
       alert('Please fill in all details to generate a study plan.');
       return;
     }
 
     const studyPlan = {
-      topic: this.topic,
-      timeConstraint: this.timePerDay,
-      complexity: this.complexity,
-      language: this.language
+       message:"Give me the study plan for java "
     };
 
-    this.appService.generateplan(studyPlan).subscribe(response=>{
+    this.appService.generatePlan(studyPlan).subscribe(response=>{
       console.log(response);
     },error=>console.log(error))
     
-     /*const studyPlan = {
-      topic: this.topic,
-      timePerDay: this.timePerDay,
-      complexity: this.complexity,
-      language: this.language
-    };
-    
-    console.log('Generated Study Plan:', studyPlan);
-    this.showSuggestions = true;*/
-
-
 
     console.log('Generated Study Plan:', studyPlan);
     this.showQuiz = true;
-
-    
   }
 
   
