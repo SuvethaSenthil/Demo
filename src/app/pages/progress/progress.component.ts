@@ -1,40 +1,26 @@
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-quiz',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './progress.component.html',
-  styleUrls: ['./progress.component.css'],
+  selector: 'app-dashboard',
+  standalone: true, // Make the component standalone
+  imports: [CommonModule, FormsModule, RouterModule], // Import required modules here
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class ProgressComponent implements OnInit {
-  totalQuestions: number = 0; // Initial value
-  correctAnswers: number = 0; // Initial value
-  quizScore: number = 0; // Initial value
-
-  constructor() {}
-
-  ngOnInit(): void {
-    this.fetchQuizData();
+export class DashboardComponent {
+ 
+  constructor(private router: Router) {
+    
   }
 
-  fetchQuizData(): void {
-    // Simulated delay to mimic backend response
-    setTimeout(() => {
-      // Replace the following data with actual backend response
-      const backendData = {
-        totalQuestions: 20,
-        correctAnswers: 16,
-      };
+  navigateToStudyPlan() {
+    this.router.navigate(['/studyplan']);
+  }
 
-      // Update quiz data
-      this.totalQuestions = backendData.totalQuestions;
-      this.correctAnswers = backendData.correctAnswers;
-      this.quizScore = Math.round(
-        (this.correctAnswers / this.totalQuestions) * 100
-      );
-    }, 2000); // Simulated 2-second delay
+  navigateToProgress() {
+    this.router.navigate(['/progress']);
   }
 }
