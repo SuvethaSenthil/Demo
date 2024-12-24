@@ -17,7 +17,7 @@ export class DashboardComponent {
   }
 
   navigateToStudyPlan() {
-    this.router.navigate(['/study-plan']);
+    this.router.navigate(['/studyplan']);
   }
 
   navigateToProgress() {
