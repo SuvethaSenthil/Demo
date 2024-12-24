@@ -38,11 +38,11 @@ export class AppService {
     return this.http.post(url, data, {headers});
   }
   validateQuiz(data: any) {
-    const url = "http://localhost:5000"+"add the quiz API path here"; //I'm not sure to to call which API endpoint.
+    const url = "http://localhost:5000"+"add the quiz API path here"; 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.tokenService.getToken()}`,
     });
-    return this.http.post(url, data, {headers}); // check API, whether you need to use POST or PUT method...
+    return this.http.post(url, data, {headers}); 
   }
 
   generateQuiz(body:any){
