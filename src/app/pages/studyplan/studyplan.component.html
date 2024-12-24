@@ -38,18 +38,10 @@
     </select>
   </div>
 
-  <!-- Preferred Language Input -->
-  <div class="form-group">
-    <label>Preferred Language:</label>
-    <input
-      type="text"
-      placeholder="e.g., English"
-      (input)="onInputChange($event, 'language')"
-    />
-  </div>
+  
 
   <!-- Generate Button -->
-  <button class="generate-button" (click)="generateStudyPlan()">
+  <button class="generate-button" (click)="generatePlan()">
     Generate Study Plan
   </button>
 
