@@ -68,7 +68,7 @@ export class SignupComponent {
   }
 
   navigateToLogin() {
-    this.router.navigate(['/login']); // Replace '/login' with the actual route to the login page
+    this.router.navigate(['/login']); 
   }
 
   subscribe(event: Event) {
